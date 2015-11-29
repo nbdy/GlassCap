@@ -277,7 +277,7 @@ def summary(args, picture_count, url_count, zip_count, exe_count, pdf_count, nud
     print "\tPictures:\t%d" % (picture_count)
     print "\t\tNude:\t%d" % (nude_count)
     print "\t\tOther:\t%d" % (other_count)
-    print "\tURL's:\t\t%d" % (url_count)
+    #print "\tURL's:\t\t%d" % (url_count)
     print "\tArchives:\t%d" % (zip_count)
     print "\tExecutables:\t%d" % (exe_count)
     print "\tPDF's:\t\t%d" % (pdf_count)
@@ -361,12 +361,12 @@ def main2(args):
     if args.verbose is True:
         print "\t[+] Carved %d PDF's." % (pdf_count)
         print "[*] Carving all visited URL's and sorting them."
-    url_count = carve_urls(args)
+    #url_count = carve_urls(args)
     if args.verbose is True:
-        print "\t[+] Carved %d URL's."
+        #print "\t[+] Carved %d URL's."
         print "\n"
         print "-" * 30
-    summary(args, picture_count, url_count, zip_count, exe_count, pdf_count, nude_count, other_count)
+    summary(args, picture_count, zip_count, exe_count, pdf_count, nude_count, other_count)
 
 
 def get_pcap_from_dir(args):
