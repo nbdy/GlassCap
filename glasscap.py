@@ -269,7 +269,7 @@ def carve_archives(args):
     return archives
 
 
-def summary(args, picture_count, url_count, zip_count, exe_count, pdf_count, nude_count, other_count):
+def summary(args, picture_count, zip_count, exe_count, pdf_count, nude_count, other_count):
     print "\n\n\n"
     print "Summary:"
     print "\tPCap File:\t%s" % (args.pcap)
