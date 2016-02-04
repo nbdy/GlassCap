@@ -1,3 +1,5 @@
+import signal
+
 from Libs import ArgumentParser
 from Libs import ExitHandler
 from Libs import FileCarver
@@ -11,6 +13,8 @@ FileCheck = FileChecker.Checker()
 Exit = ExitHandler.Handler()
 PcapParser = PCapParser.Parser()
 Filecrv = FileCarver.Carver()
+
+signal.signal(signal.SIGINT, Exit.signal_handler)
 
 #TODOBLOCK
 #TODO: Banners

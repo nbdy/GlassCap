@@ -1,11 +1,7 @@
-import signal
 import sys
 
 
 class Handler:
-    def __init__(self):
-        signal.signal(signal.SIGINT, self.signal_handler)
-
     def signal_handler(self, signal, frame):
         print "\n[!] You pressed CTRL + C."
         sys.exit()
