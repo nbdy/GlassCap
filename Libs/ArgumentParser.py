@@ -8,12 +8,11 @@ class Parser:
         self.parser = argparse.ArgumentParser()
 
     def ArgumentGetter(self):
-        self.parser.add_argument('-d', '--directory', action='store',
-                                 help='Analyze all Pcaps from that directory.')
-        self.parser.add_argument('-p', '--pcap', action='store',
-                                 help='Read from PCAP.')
-        self.parser.add_argument('-v', '--verbose', action='store_true',
-                                 help='Verbose Output')
+        self.parser.add_argument('-d', '--directory', action='store', help='Analyze all Pcaps from that directory.')
+        self.parser.add_argument('-p', '--pcap', action='store', help='Read from PCAP.')
+        self.parser.add_argument('-l', '--listen', action='store', help='Listen on port.')
+        self.parser.add_argument('-v', '--verbose', action='store_true', help='Verbose Output')
+
 
         args = self.parser.parse_args()
         return args
@@ -25,6 +24,9 @@ class Parser:
         if args.pcap is not None:
             if os.path.isfile(args.pcap) is False:
                 sys.exit("\n[!] Please provide a valid Path to the PCAP.")
+        if args.listen is not None:
+            if args.listen < 0 or args.listen > 65535:
+                sys.exit("\n[!] Please specify a Port between 0 and 65535.")
         if args.directory is not None:
             if os.path.exists(args.directory) is False:
                 sys.exit("\n[!] The Path you entered seems to be wrong.")

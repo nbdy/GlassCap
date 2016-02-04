@@ -3,6 +3,8 @@ import re
 import sys
 
 
+# TODO: If Pcap dir is chosen only print a summary at the end of the analysation
+
 class Parser:
     def get_http_headers(self, http_payload):
         try:

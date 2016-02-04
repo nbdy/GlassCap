@@ -29,20 +29,24 @@ def main2(args):
         print "[*] Carving Pictures."
     picture_count = Filecrv.ImageCarver(args)
     nude_count, other_count = FileCheck.NudeChecker(args)
-    if args.verbose is True:
+    if args.verbose is True and picture_count > 0:
         print "\t[+] Carved %d Pictures." % (picture_count)
+    if args.verbose is True:
         print "[*] Carving Archived Files."
     zip_count = Filecrv.ArchiveCarver(args)
-    if args.verbose is True:
+    if args.verbose is True and zip_count > 0:
         print "\t[+] Carved %d Archives." % (zip_count)
+    if args.verbose is True:
         print "[*] Carving executables."
     exe_count = Filecrv.ExeCarver(args)
-    if args.verbose is True:
+    if args.verbose is True and exe_count > 0:
         print "\t[+] Carved %d executables." % (exe_count)
+    if args.verbose is True:
         print "[*] Carving PDF's"
     pdf_count = Filecrv.PDFCarver(args)
-    if args.verbose is True:
+    if args.verbose is True and pdf_count > 0:
         print "\t[+] Carved %d PDF's." % (pdf_count)
+    if args.verbose is True:
         print "[*] Carving all visited URL's and sorting them."
     #url_count = carve_urls(args)
     if args.verbose is True:

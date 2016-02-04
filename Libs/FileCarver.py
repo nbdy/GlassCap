@@ -1,6 +1,7 @@
 import logging
 logging.getLogger("scapy.runtime").setLevel(logging.ERROR)  # Suppress Scapy IPv6 Warning
 from scapy.all import *
+from scapy_http import http
 import PCapParser
 import FileExtractor
 
@@ -114,4 +115,32 @@ class Carver:
         return pdfs
 
     def URLCarver(self, args):
-        return 1
+        url_directory = './carved_content/urls/'
+        temp_pcap_name = string.split(args.pcap, '/')[-1]
+        urls = 0
+        p = rdpcap(args.pcap)
+        sessions = p.sessions()
+        for session in sessions:
+            for pkt in sessions[session]:
+                if not pkt.haslayer(http.HTTPRequest):
+                    return 0
+                else:
+                    http_layer = pkt.getlayer(http.HTTPRequest)
+                    ip_layer = pkt.getlayer(IP)
+                    filename = "%s.txt" % (temp_pcap_name)
+                    f = open("%s%s" % (url_directory, filename), 'a')
+                    f.write("%s>>>%s" % (http_layer, ip_layer))
+                    f.close()
+                    urls += 1
+
+        return urls
+
+    # TODO: SessionWorker to shorten everything down a bit
+    """
+    def SessionWorker(self, args):
+        p = rdpcap(args.pcap)
+        sessions = p.sessions()
+        for session in sessions:
+            http_payload = ''
+            for pkt in sessions[session]:
+    """
