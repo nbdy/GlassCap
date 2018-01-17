@@ -33,9 +33,3 @@ URLs: Sorted after Keywords in the URL
 
 
 
-Coming soon:
-
-More Filetypes
-
-URL sorting after .php and .asp for potential usage with SQLi Tools.
-
